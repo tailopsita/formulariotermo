@@ -14,79 +14,85 @@
     </script>
     <style>
         /* Estilos Otimizados para Impressão A4 P&B */
-        @page { size: A4; margin: 10mm; }
+        @page { size: A4; margin: 12mm; }
         * { box-sizing: border-box; }
         body { 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            font-size: 8.5pt; 
-            line-height: 1.2;
+            font-size: 10pt; /* Fonte aumentada */
+            line-height: 1.4; /* Entrelinhas mais confortável */
             margin: 0; padding: 0; color: #000; background: #fff;
         }
         .page { 
             page-break-after: always; 
-            height: 277mm; /* Limite seguro para A4 */
             column-count: 2; 
-            column-gap: 8mm; 
+            column-gap: 10mm; 
+            column-fill: balance; /* Equilibra o conteúdo nas duas colunas */
+            min-height: 270mm;
         }
         
         /* Cabeçalho */
         .header {
             column-span: all;
             border: 2px solid #000;
-            padding: 8px 12px;
-            margin-bottom: 10px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: #f8f8f8;
+            border-radius: 4px;
         }
         .header-col { text-align: center; }
-        .header-title { font-size: 14pt; font-weight: bold; text-transform: uppercase; margin: 0; }
-        .header-sub { font-size: 9pt; margin: 2px 0 0 0; }
+        .header-title { font-size: 15pt; font-weight: bold; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+        .header-sub { font-size: 10pt; margin: 3px 0 0 0; }
         
         /* Caixas de Conteúdo */
         .box {
-            border: 1px solid #333;
-            border-top: 3px solid #000;
-            margin-bottom: 8px;
-            padding: 6px;
-            break-inside: avoid; /* Evita que a caixa corte no meio da coluna */
+            border: 1px solid #444;
+            border-top: 4px solid #000;
+            margin-bottom: 15px; /* Mais respiro entre as caixas */
+            padding: 10px; /* Mais espaço interno */
+            break-inside: avoid;
             background-color: #fff;
+            border-radius: 3px;
         }
         .box-title {
-            font-size: 9.5pt;
+            font-size: 11pt;
             font-weight: bold;
             text-transform: uppercase;
             text-align: center;
-            margin: 0 0 5px 0;
-            padding-bottom: 3px;
+            margin: 0 0 8px 0;
+            padding-bottom: 5px;
             border-bottom: 1px solid #ccc;
         }
         
         /* Equações e Variáveis */
         .eq-display {
             text-align: center;
-            font-size: 10pt;
-            margin: 6px 0;
-            padding: 4px 0;
+            font-size: 11pt; /* Equações levemente maiores */
+            margin: 8px 0;
+            padding: 5px 0;
         }
         .var-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 7.5pt;
+            font-size: 8.5pt;
         }
-        .var-list li { margin-bottom: 2px; padding-left: 6px; text-indent: -6px; }
+        .var-list li { margin-bottom: 4px; padding-left: 8px; text-indent: -8px; }
         .var-list strong { font-weight: bold; }
         
         /* Tabelas */
-        table { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 8pt; }
-        th, td { border: 1px solid #666; padding: 3px 5px; text-align: left; }
+        table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 9pt; }
+        th, td { border: 1px solid #555; padding: 5px 6px; text-align: left; }
         th { background-color: #eee; font-weight: bold; text-align: center; }
+        
+        /* Separadores Internos */
+        .divider { border: 0; border-top: 1px dashed #aaa; margin: 8px 0; }
+        .subtitle { text-align:center; margin:4px 0; font-size:8.5pt; font-style: italic; color: #333; }
         
         /* Utilitários */
         .center { text-align: center; }
-        .col-span { column-span: all; }
     </style>
 </head>
 <body>
@@ -99,7 +105,7 @@
             </div>
             <div class="header-col">
                 <h1 class="header-title">Termodinâmica II</h1>
-                <p class="header-sub">Formulário Oficial de Prova</p>
+                <p class="header-sub">Formulário Oficial - Prova 1</p>
             </div>
             <div class="header-col" style="text-align: right;">
                 <p class="header-sub">Prof. Luis Rafael Bonetto</p>
@@ -114,120 +120,88 @@
                 <tr><td class="center">$M$</td><td>Propriedade extensiva total (Ex: $V, H, S, G$)</td></tr>
                 <tr><td class="center">$m$</td><td>Propriedade intensiva (molar ou específica)</td></tr>
                 <tr><td class="center">$M_i$</td><td>Propriedade molar da espécie $i$ pura</td></tr>
-                <tr><td class="center">$\bar{M}_i$</td><td>Propriedade parcial molar da espécie $i$ na mistura</td></tr>
+                <tr><td class="center">$\bar{M}_i$</td><td>Propriedade parcial molar de $i$ na mistura</td></tr>
                 <tr><td class="center">$\Delta M_{mis}$</td><td>Variação da propriedade na mistura</td></tr>
-                <tr><td class="center">$l, v, s, \alpha, \beta$</td><td>Líquido, vapor, sólido, fases genéricas (sobrescritos)</td></tr>
-                <tr><td class="center">$sat, \infty$</td><td>Saturação, diluição infinita (sobrescritos)</td></tr>
-                <tr><td class="center">$GI$ ou $IG$</td><td>Gás Ideal (sobrescrito)</td></tr>
-                <tr><td class="center">$x_i, y_i, z_i$</td><td>Fração molar: liq, vapor e global (respectivamente)</td></tr>
+                <tr><td class="center">$l, v, s$</td><td>Líquido, vapor, sólido</td></tr>
+                <tr><td class="center">$\alpha, \beta$</td><td>Fases genéricas em equilíbrio</td></tr>
+                <tr><td class="center">$sat, \infty$</td><td>Saturação e Diluição infinita</td></tr>
+                <tr><td class="center">$GI$ ou $IG$</td><td>Gás Ideal</td></tr>
+                <tr><td class="center">$x_i, y_i$</td><td>Fração molar no líquido ($x$) e no vapor ($y$)</td></tr>
             </table>
         </div>
 
         <div class="box">
-            <h2 class="box-title">Regra das Fases & Critérios (Cap. 1)</h2>
+            <h2 class="box-title">Regra das Fases & Critérios</h2>
             <div class="eq-display">$$ F = 2 - \pi + N $$</div>
             <ul class="var-list">
-                <li>$F$: Graus de liberdade (variáveis intensivas independentes)</li>
-                <li>$\pi$: Número de fases em equilíbrio</li>
-                <li>$N$: Número de espécies químicas (componentes)</li>
+                <li><strong>$F$:</strong> Graus de liberdade (variáveis intensivas independentes)</li>
+                <li><strong>$\pi$:</strong> Número de fases em equilíbrio</li>
+                <li><strong>$N$:</strong> Número de espécies químicas (componentes)</li>
             </ul>
-            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 5px 0;">
-            <p style="margin:2px 0; font-weight:bold; text-align:center; font-size:8pt;">Critérios de Equilíbrio entre Fases ($\alpha$ e $\beta$)</p>
-            <div class="eq-display">
-                $T^\alpha = T^\beta$ (Térmico) <br>
-                $P^\alpha = P^\beta$ (Mecânico) <br>
-                $\mu_i^\alpha = \mu_i^\beta$ (Químico, para todo $i$)
+            <hr class="divider">
+            <p class="subtitle" style="font-weight:bold;">Critérios de Equilíbrio entre Fases ($\alpha$ e $\beta$)</p>
+            <div class="eq-display" style="font-size: 10pt;">
+                $T^\alpha = T^\beta$ (Equilíbrio Térmico) <br><br>
+                $P^\alpha = P^\beta$ (Equilíbrio Mecânico) <br><br>
+                $\mu_i^\alpha = \mu_i^\beta$ (Equilíbrio Químico, para toda espécie $i$)
             </div>
             <ul class="var-list">
-                <li>$\mu_i$: Potencial químico da espécie $i$ [J/mol]</li>
+                <li><strong>$\mu_i$:</strong> Potencial químico da espécie $i$ [J/mol]</li>
             </ul>
         </div>
 
         <div class="box">
             <h2 class="box-title">Equações de Clapeyron (Cap. 1)</h2>
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Geral (Qualquer transição de fase, sem hipóteses)</p>
+            <p class="subtitle">Geral (Qualquer transição de fase, sem hipóteses)</p>
             <div class="eq-display">$$ \frac{dP^{sat}}{dT} = \frac{\Delta h^{tr}}{T \cdot \Delta v^{tr}} $$</div>
             <ul class="var-list">
-                <li>$P^{sat}$: Pressão de saturação [Pa, bar]</li>
-                <li>$T$: Temperatura da transição [K]</li>
-                <li>$\Delta h^{tr}$: Variação de entalpia molar de transição [J/mol]</li>
-                <li>$\Delta v^{tr}$: Variação de volume molar de transição [$m^3$/mol, $cm^3$/mol]</li>
+                <li><strong>$P^{sat}$:</strong> Pressão de saturação [Pa, bar]</li>
+                <li><strong>$T$:</strong> Temperatura da transição [K]</li>
+                <li><strong>$\Delta h^{tr}$:</strong> Var. de entalpia molar de transição [J/mol]</li>
+                <li><strong>$\Delta v^{tr}$:</strong> Var. de volume molar de transição [$m^3$/mol]</li>
             </ul>
-            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 5px 0;">
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Variação de Entropia na Transição ($\Delta g^{tr} = 0$)</p>
+            <hr class="divider">
+            <p class="subtitle">Variação de Entropia na Transição ($\Delta g^{tr} = 0$)</p>
             <div class="eq-display">$$ \Delta s^{tr} = \frac{\Delta h^{tr}}{T} $$</div>
-            <ul class="var-list">
-                <li>$\Delta s^{tr}$: Variação de entropia molar de transição [J/(mol$\cdot$K)]</li>
-            </ul>
         </div>
 
         <div class="box">
-            <h2 class="box-title">Equação de Clausius-Clapeyron (Cap. 1)</h2>
-            <p style="text-align:justify; margin:2px 0; font-size:7pt; color:#444;">Hipóteses: Equilíbrio L-V ou S-V; fase vapor é Gás Ideal ($v^v = RT/P$); volume do líquido/sólido é desprezível ($v^l \approx 0$); $\Delta h^{vap}$ é constante no intervalo.</p>
+            <h2 class="box-title">Clausius-Clapeyron e Antoine</h2>
+            <p style="text-align:justify; margin:2px 0; font-size:8pt; color:#444;"><strong>Hipóteses Clausius:</strong> Equilíbrio L-V ou S-V; vapor comporta-se como GI ($v^v = RT/P$); volume do líquido é desprezível ($v^l \approx 0$); $\Delta h^{vap}$ constante no intervalo de $T$.</p>
             <div class="eq-display">$$ \ln \left( \frac{P_2^{sat}}{P_1^{sat}} \right) = -\frac{\Delta h^{vap}}{R} \left( \frac{1}{T_2} - \frac{1}{T_1} \right) $$</div>
             <div class="eq-display">$$ \frac{d(\ln P^{sat})}{d(1/T)} = -\frac{\Delta h^{vap}}{R} $$</div>
             <ul class="var-list">
-                <li>$\Delta h^{vap}$: Variação de entalpia de vaporização [J/mol]</li>
-                <li>$R$: Constante universal dos gases [J/(mol$\cdot$K)]</li>
+                <li>A inclinação do gráfico de $\ln P^{sat}$ vs $(1/T)$ é $-\frac{\Delta h^{vap}}{R}$.</li>
             </ul>
-            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 5px 0;">
-            <p style="text-align:center; margin:2px 0; font-weight:bold; font-size:8pt;">Equação de Antoine</p>
+            <hr class="divider">
+            <p class="subtitle" style="font-weight:bold;">Equação de Antoine</p>
             <div class="eq-display">$$ \ln P^{sat} = A - \frac{B}{T + C} $$</div>
             <ul class="var-list">
-                <li>$A, B, C$: Constantes tabeladas específicas da substância</li>
-                <li>*Cuidado rigoroso com as unidades de $P$ e $T$ tabeladas para Antoine.*</li>
+                <li>$A, B, C$: Constantes tabeladas específicas. Exige atenção máxima às unidades de $P$ e $T$ da tabela utilizada.</li>
             </ul>
         </div>
 
         <div class="box">
-            <h2 class="box-title">Termodinâmica de Misturas (Cap. 2)</h2>
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Definição de Propriedade Parcial Molar ($\bar{M}_i$)</p>
-            <div class="eq-display">$$ \bar{M}_i = \left[ \frac{\partial (nM)}{\partial n_i} \right]_{T, P, n_{j \neq i}} $$</div>
-            <ul class="var-list">
-                <li>$\bar{M}_i$: Resposta da mistura à adição de $1$ mol de $i$ a $T,P$ ctes.</li>
-            </ul>
-            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 5px 0;">
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Relação de Soma (Cálculo da Propriedade da Mistura)</p>
-            <div class="eq-display">$$ M = \sum x_i \bar{M}_i $$</div>
-            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 5px 0;">
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Equação de Gibbs-Duhem ($T, P$ constantes)</p>
-            <div class="eq-display">$$ \sum x_i d\bar{M}_i = 0 $$</div>
-        </div>
-        
-        <div class="box">
-            <h2 class="box-title">Misturas Binárias - Método Tangente (Cap. 2)</h2>
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Relações práticas para componentes 1 e 2</p>
+            <h2 class="box-title">Dependência com a Temperatura</h2>
+            <p class="subtitle">Cálculo de Propriedades Térmicas (Kirchhoff)</p>
             <div class="eq-display">
-                $$ \bar{M}_1 = M + x_2 \frac{dM}{dx_1} $$<br>
-                $$ \bar{M}_2 = M - x_1 \frac{dM}{dx_1} $$
+                $$ h(T) = h(T_0) + \int_{T_0}^{T} C_p \, dT $$<br>
+                $$ s(T) = s(T_0) + \int_{T_0}^{T} \frac{C_p}{T} \, dT $$
             </div>
             <ul class="var-list">
-                <li>$M$: Equação global da propriedade em função da fração molar.</li>
-                <li>$\frac{dM}{dx_1}$: Derivada analítica da curva de $M$ em relação a $x_1$.</li>
+                <li>Usado quando a transição não ocorre na temperatura padrão ou para aquecimento sensível das fases.</li>
             </ul>
         </div>
-
-        <div class="box">
-            <h2 class="box-title">Propriedades de Mistura ($\Delta M_{mis}$)</h2>
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Diferença entre a mistura real e as espécies puras separadas</p>
-            <div class="eq-display">$$ \Delta M_{mis} = M - \sum x_i M_i $$</div>
-            <ul class="var-list">
-                <li>$\Delta M_{mis}$: Variação da propriedade ao misturar [Ex: J/mol, $cm^3$/mol]</li>
-                <li>Se $\Delta V_{mis} < 0$: Ocorre contração volumétrica.</li>
-                <li>Se $\Delta H_{mis} < 0$: Mistura exotérmica (libera calor).</li>
-            </ul>
-        </div>
-
     </div>
 
     <div class="page">
-        <div class="header" style="border-bottom-style: dashed;">
+        <div class="header" style="border-bottom-style: dashed; background-color: #f0f0f0;">
             <div class="header-col" style="text-align: left;">
                 <p class="header-sub"><strong>IFSul - Câmpus Pelotas</strong></p>
             </div>
             <div class="header-col">
                 <h1 class="header-title">Termodinâmica II (Verso)</h1>
-                <p class="header-sub">Matemática, Conversões e Gás Ideal</p>
+                <p class="header-sub">Misturas, Matemática e Conversões</p>
             </div>
             <div class="header-col" style="text-align: right;">
                 <p class="header-sub">Prof. Luis Rafael Bonetto</p>
@@ -235,28 +209,59 @@
         </div>
 
         <div class="box">
-            <h2 class="box-title">Mistura de Gases Ideais (GI)</h2>
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Relações válidas exclusivamente para misturas ideais</p>
+            <h2 class="box-title">Termodinâmica de Misturas (Cap. 2)</h2>
+            <p class="subtitle">Definição de Propriedade Parcial Molar ($\bar{M}_i$)</p>
+            <div class="eq-display">$$ \bar{M}_i = \left[ \frac{\partial (nM)}{\partial n_i} \right]_{T, P, n_{j \neq i}} $$</div>
+            <ul class="var-list">
+                <li>Representa a resposta da mistura à adição de $1$ mol da espécie $i$, mantendo $T$, $P$ e os outros moles constantes.</li>
+            </ul>
+            <hr class="divider">
+            <p class="subtitle">Relação de Soma e Equação de Gibbs-Duhem</p>
             <div class="eq-display">
-                $$ \bar{V}_i^{GI} = V_i^{GI} \quad \text{e} \quad \bar{H}_i^{GI} = H_i^{GI} $$<br>
-                $$ \Delta V_{mis}^{GI} = 0 \quad \text{e} \quad \Delta H_{mis}^{GI} = 0 $$
+                $$ M = \sum x_i \bar{M}_i \quad \text{(Soma)} $$<br>
+                $$ \sum x_i d\bar{M}_i = 0 \quad \text{(Gibbs-Duhem, a T,P ctes)} $$
             </div>
-            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 5px 0;">
-            <p style="text-align:center; margin:2px 0; font-size:7.5pt;">Energia e Entropia de Mistura GI</p>
+        </div>
+        
+        <div class="box">
+            <h2 class="box-title">Misturas Binárias - Método Tangente</h2>
+            <p class="subtitle">Relações práticas para componentes 1 e 2</p>
             <div class="eq-display">
-                $$ \bar{G}_i^{GI} = \mu_i^{GI} = G_i^{GI} + RT \ln(y_i) $$<br>
-                $$ \Delta G_{mis}^{GI} = RT \sum y_i \ln(y_i) \quad (< 0) $$<br>
-                $$ \Delta S_{mis}^{GI} = -R \sum y_i \ln(y_i) \quad (> 0) $$
+                $$ \bar{M}_1 = M + x_2 \frac{dM}{dx_1} $$<br><br>
+                $$ \bar{M}_2 = M - x_1 \frac{dM}{dx_1} $$
             </div>
             <ul class="var-list">
-                <li>$\mu_i^{GI}$: Potencial químico da espécie i no gás ideal [J/mol]</li>
-                <li>$y_i$: Fração molar na fase gasosa (sempre $\leq 1$, logo $\ln y_i$ é negativo).</li>
+                <li><strong>$M$:</strong> Equação global da propriedade em função da fração.</li>
+                <li><strong>Dica Algébrica:</strong> Antes de derivar, se a equação for em relação a $x_1$, substitua todos os termos $x_2$ por $(1 - x_1)$.</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h2 class="box-title">Propriedades de Mistura e Gás Ideal</h2>
+            <p class="subtitle">Diferença entre mistura real e espécies puras ($\Delta M_{mis}$)</p>
+            <div class="eq-display">$$ \Delta M_{mis} = M - \sum x_i M_i $$</div>
+            <ul class="var-list">
+                <li>Se $\Delta V_{mis} < 0$: Ocorre contração volumétrica.</li>
+                <li>Se $\Delta H_{mis} < 0$: Mistura exotérmica (libera calor).</li>
+            </ul>
+            <hr class="divider">
+            <p class="subtitle">Entalpia de Solução ($\Delta \tilde{H}_{sol}$)</p>
+            <div class="eq-display">$$ \Delta \tilde{H}_{sol} = \frac{\Delta H_{mis}}{x_{soluto}} $$</div>
+            <hr class="divider">
+            <p class="subtitle">Mistura de Gases Ideais (GI) e Soluções Regulares</p>
+            <div class="eq-display">
+                $$ \Delta V_{mis}^{GI} = 0 \quad \text{e} \quad \Delta H_{mis}^{GI} = 0 $$<br>
+                $$ \Delta S_{mis}^{GI} = -R \sum y_i \ln(y_i) \quad (> 0) $$<br>
+                $$ \mu_i^{GI} = G_i^{GI} + RT \ln(y_i) $$
+            </div>
+            <ul class="var-list">
+                <li><strong>Solução Regular:</strong> Adota mistura aleatória onde $\Delta S_{mis} = -R \sum x_i \ln(x_i)$ mesmo se $\Delta H_{mis} \neq 0$.</li>
             </ul>
         </div>
 
         <div class="box">
             <h2 class="box-title">Constantes Universais ($R$)</h2>
-            <ul class="var-list" style="font-size:8.5pt; text-align:center; margin-top:5px;">
+            <ul class="var-list" style="font-size:9.5pt; text-align:center; margin-top:8px; line-height: 1.6;">
                 <li>$R = 8,314$ <strong>J / (mol$\cdot$K)</strong></li>
                 <li>$R = 8,314$ <strong>(m$^3\cdot$Pa) / (mol$\cdot$K)</strong></li>
                 <li>$R = 0,08314$ <strong>(L$\cdot$bar) / (mol$\cdot$K)</strong></li>
@@ -266,52 +271,26 @@
         </div>
 
         <div class="box">
-            <h2 class="box-title">Conversões</h2>
+            <h2 class="box-title">Conversões e Matemática Essencial</h2>
             <table>
-                <tr><th colspan="2">Pressão</th></tr>
+                <tr><th colspan="2">Pressão e Volume</th></tr>
                 <tr><td>1 atm</td><td>101325 Pa = 1,01325 bar = 760 mmHg</td></tr>
                 <tr><td>1 bar</td><td>$10^5$ Pa = 100 kPa</td></tr>
-                <tr><th colspan="2">Volume e Energia</th></tr>
-                <tr><td>1 L</td><td>$10^{-3} m^3 = 1000 cm^3 = 1000 mL$</td></tr>
-                <tr><td>1 $cm^3$</td><td>$10^{-6} m^3$</td></tr>
+                <tr><td>1 L</td><td>$10^{-3} m^3 = 1000 cm^3$</td></tr>
+                <tr><th colspan="2">Energia e Temperatura</th></tr>
                 <tr><td>1 J</td><td>1 $Pa\cdot m^3$ = 10 $cm^3\cdot bar$</td></tr>
-                <tr><th colspan="2">Temperatura e Massa</th></tr>
                 <tr><td>$T (K)$</td><td>$T (^\circ C) + 273,15$</td></tr>
-                <tr><td>$MM (kg/mol)$</td><td>$MM (g/mol) / 1000$</td></tr>
             </table>
-        </div>
-
-        <div class="box">
-            <h2 class="box-title">Ferramentas: Derivadas e Integrais</h2>
-            <table style="border:none;">
-                <tr><th style="background:transparent; border:none; text-align:left; border-bottom:1px solid #000;">Derivadas Fundamentais</th></tr>
-                <tr><td style="border:none;">Potência: $\frac{d}{dx} (x^n) = n \cdot x^{n-1}$</td></tr>
-                <tr><td style="border:none;">Produto: $\frac{d}{dx} (u \cdot v) = u \frac{dv}{dx} + v \frac{du}{dx}$</td></tr>
-                <tr><td style="border:none;">Quociente: $\frac{d}{dx} \left(\frac{u}{v}\right) = \frac{v \frac{du}{dx} - u \frac{dv}{dx}}{v^2}$</td></tr>
-                <tr><td style="border:none;">Logaritmo: $\frac{d}{dx} (\ln x) = \frac{1}{x}$</td></tr>
-                <tr><td style="border:none;">Regra da Cadeia: $\frac{d}{dx} (\ln u) = \frac{1}{u} \cdot \frac{du}{dx}$</td></tr>
-                
-                <tr><th style="background:transparent; border:none; text-align:left; border-bottom:1px solid #000; padding-top:8px;">Integrais Fundamentais</th></tr>
-                <tr><td style="border:none;">Polinômio: $\int x^n dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1)$</td></tr>
-                <tr><td style="border:none;">Inverso: $\int \frac{1}{x} dx = \ln |x| + C$</td></tr>
-                <tr><td style="border:none; padding-top:5px; font-size:7.5pt; color:#444;">Ex: Cap. Térmica (Integração Direta):<br> $\int (A + BT + CT^2) dT = AT + \frac{B}{2}T^2 + \frac{C}{3}T^3$</td></tr>
-            </table>
-        </div>
-
-        <div class="box">
-            <h2 class="box-title">Ferramentas: Álgebra e Logaritmos</h2>
-            <ul class="var-list" style="font-size: 8.5pt;">
-                <li><strong>Soma de Frações Binárias:</strong> $x_1 + x_2 = 1 \implies dx_2 = -dx_1$</li>
-                <li><strong>Antes de derivar em misturas binárias:</strong> Se a equação for pedida em relação a $x_1$, substitua todos os termos $x_2$ por $(1 - x_1)$ na equação de $M$ original.</li>
-            </ul>
-            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 5px 0;">
-            <p style="text-align:center; margin:2px 0; font-weight:bold; font-size:8pt;">Propriedades dos Logaritmos e Euler</p>
-            <div class="eq-display" style="font-size: 9pt;">
-                $\ln(a \cdot b) = \ln(a) + \ln(b)$ <br><br>
-                $\ln\left(\frac{a}{b}\right) = \ln(a) - \ln(b)$ <br><br>
-                $\ln(a^b) = b \cdot \ln(a)$ <br><br>
-                $\ln(e) = 1 \quad | \quad \ln(1) = 0$ <br><br>
-                $e^{\ln(x)} = x \quad | \quad \ln(e^x) = x$
+            
+            <hr class="divider">
+            <p class="subtitle">Derivadas, Integrais e Logaritmos</p>
+            <div class="eq-display" style="font-size: 10pt; text-align: left; padding-left: 10px;">
+                $\bullet$ Produto: $\frac{d}{dx} (u \cdot v) = u \frac{dv}{dx} + v \frac{du}{dx}$ <br><br>
+                $\bullet$ Quociente: $\frac{d}{dx} \left(\frac{u}{v}\right) = \frac{v \frac{du}{dx} - u \frac{dv}{dx}}{v^2}$ <br><br>
+                $\bullet$ Logaritmo: $\frac{d}{dx} (\ln x) = \frac{1}{x}$ <br><br>
+                $\bullet$ Regra da Cadeia: $\frac{d}{dx} (\ln u) = \frac{1}{u} \cdot \frac{du}{dx}$ <br><br>
+                $\bullet$ Integral C. Térmica: $\int (A + BT) dT = AT + \frac{B}{2}T^2$<br><br>
+                $\bullet$ Log: $\ln(a \cdot b) = \ln a + \ln b \quad | \quad \ln(a^b) = b \cdot \ln a$
             </div>
         </div>
 
