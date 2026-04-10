@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário - Termodinâmica II</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: Arial, sans-serif; 
+            font-size: 10pt; 
+            margin: 0; 
+            padding: 0; 
+            color: #000;
+        }
+        .page { 
+            page-break-after: always; 
+            column-count: 2; 
+            column-gap: 15mm; 
+            height: 275mm;
+        }
+        h1 { font-size: 14pt; text-align: center; text-transform: uppercase; border-bottom: 2px solid #000; margin-bottom: 5px; column-span: all; }
+        h2 { font-size: 11pt; background-color: #eee; padding: 3px; border-left: 4px solid #333; margin-top: 10px; margin-bottom: 5px; }
+        h3 { font-size: 10pt; font-weight: bold; margin-top: 8px; margin-bottom: 2px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 8px; font-size: 9pt; }
+        th, td { border: 1px solid #000; padding: 4px; text-align: left; }
+        th { background-color: #f5f5f5; }
+        .eq-box { 
+            border: 1px solid #ccc; 
+            padding: 6px; 
+            margin-bottom: 6px; 
+            border-radius: 4px; 
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 11pt;
+            break-inside: avoid;
+        }
+        .text-left { text-align: left; font-family: Arial, sans-serif; font-size: 9pt; display: block; margin-bottom: 3px; }
+        .math { font-style: italic; }
+        .bold { font-weight: bold; }
+        .overline { text-decoration: overline; }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <h1>FRENTE - TERMODINÂMICA E FÍSICO-QUÍMICA</h1>
+
+        <h2>1. DICIONÁRIO DE PROPRIEDADES</h2>
+        <table>
+            <tr><th>Notação</th><th>Significado</th></tr>
+            <tr><td><span class="math">M</span></td><td>Propriedade extensiva total (Ex: V, H, S, G)</td></tr>
+            <tr><td><span class="math">m</span></td><td>Propriedade intensiva (molar ou específica)</td></tr>
+            <tr><td><span class="math">M<sub>i</sub></span></td><td>Propriedade molar da espécie pura <span class="math">i</span></td></tr>
+            <tr><td><span class="math"><span class="overline">M</span><sub>i</sub></span></td><td>Propriedade parcial molar da espécie <span class="math">i</span> na mistura</td></tr>
+            <tr><td><span class="math">&Delta;M<sub>mis</sub></span></td><td>Variação da propriedade na mistura</td></tr>
+            <tr><td>Sobrescritos</td><td><span class="math">l</span> (líquido), <span class="math">v</span> (vapor), <span class="math">s</span> (sólido), <span class="math">&alpha;,&beta;</span> (fases genéricas)</td></tr>
+            <tr><td><span class="math">sat</span> / <span class="math">&infin;</span></td><td>Saturação / Diluição infinita</td></tr>
+            <tr><td><span class="math">GI</span> ou <span class="math">IG</span></td><td>Gás Ideal</td></tr>
+            <tr><td><span class="math">x<sub>i</sub> , y<sub>i</sub> , z<sub>i</sub></span></td><td>Fração molar (líquido), (vapor), (global)</td></tr>
+        </table>
+
+        <h2>2. TERMO 1 & FÍSICO-QUÍMICA BASE</h2>
+        <div class="eq-box">
+            <span class="text-left"><strong>Regra das Fases de Gibbs:</strong></span>
+            F = 2 - &pi; + N
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Definições Fundamentais:</strong></span>
+            H = U + PV<br>
+            A = U - TS<br>
+            G = H - TS
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Relações de Propriedades (Sist. Fechado):</strong></span>
+            dU = TdS - PdV<br>
+            dH = TdS + VdP<br>
+            dG = -SdT + VdP
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Capacidade Térmica:</strong></span>
+            dH = C<sub>p</sub> dT &nbsp;&nbsp;|&nbsp;&nbsp; dU = C<sub>v</sub> dT
+        </div>
+
+        <h2>3. CAP 1: EQUILÍBRIO DE FASES (PURA)</h2>
+        <div class="eq-box">
+            <span class="text-left"><strong>Critério de Equilíbrio de Fases:</strong></span>
+            T<sup>&alpha;</sup> = T<sup>&beta;</sup> &nbsp;&nbsp;|&nbsp;&nbsp; P<sup>&alpha;</sup> = P<sup>&beta;</sup> &nbsp;&nbsp;|&nbsp;&nbsp; &mu;<sup>&alpha;</sup> = &mu;<sup>&beta;</sup> &nbsp;(ou&nbsp; g<sup>&alpha;</sup> = g<sup>&beta;</sup>)
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Transição de Fase (Critério G e S):</strong></span>
+            &Delta;g<sup>tr</sup> = 0 &nbsp;&rArr;&nbsp; &Delta;h<sup>tr</sup> = T&Delta;s<sup>tr</sup><br>
+            &Delta;s<sup>tr</sup> = &Delta;h<sup>tr</sup> / T
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Equação de Clapeyron (Geral):</strong></span>
+            dP<sup>sat</sup> / dT = &Delta;h<sup>tr</sup> / (T &middot; &Delta;v<sup>tr</sup>)
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Eq. Clausius-Clapeyron (L-V ou S-V):</strong></span>
+            <span class="text-left" style="font-size: 8pt; color:#444;">*Hipóteses: Vapor como GI (v<sup>v</sup> = RT/P), v<sup>l</sup> desprezível, &Delta;h<sup>vap</sup> constante.</span>
+            ln(P<sub>2</sub><sup>sat</sup> / P<sub>1</sub><sup>sat</sup>) = -(&Delta;h<sup>vap</sup> / R) &middot; [ (1 / T<sub>2</sub>) - (1 / T<sub>1</sub>) ]<br><br>
+            d(ln P<sup>sat</sup>) / d(1/T) = - &Delta;h<sup>vap</sup> / R
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Equação de Antoine:</strong></span>
+            ln P<sup>sat</sup> = A - [ B / (T + C) ]
+        </div>
+
+        <h2>4. CAP 2: TERMODINÂMICA DE MISTURAS</h2>
+        <div class="eq-box">
+            <span class="text-left"><strong>Definição Propriedade Parcial Molar:</strong></span>
+            <span class="overline">M</span><sub>i</sub> = [ &part;(nM) / &part;n<sub>i</sub> ]<sub>T, P, n<sub>j&ne;i</sub></sub>
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Relação de Soma (Mistura):</strong></span>
+            M = &Sigma; x<sub>i</sub> <span class="overline">M</span><sub>i</sub>
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Equação de Gibbs-Duhem:</strong></span>
+            &Sigma; x<sub>i</sub> d<span class="overline">M</span><sub>i</sub> = 0 &nbsp;&nbsp;(a T, P constantes)
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Cálculo para Misturas Binárias (1 e 2):</strong></span>
+            <span class="overline">M</span><sub>1</sub> = M + x<sub>2</sub> &middot; (dM / dx<sub>1</sub>)<br>
+            <span class="overline">M</span><sub>2</sub> = M - x<sub>1</sub> &middot; (dM / dx<sub>1</sub>)<br>
+            <span class="overline">M</span><sub>1</sub> = M - x<sub>2</sub> &middot; (dM / dx<sub>2</sub>)
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Potencial Químico:</strong></span>
+            &mu;<sub>i</sub> = <span class="overline">G</span><sub>i</sub>
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Propriedade de Mistura (&Delta;M<sub>mis</sub>):</strong></span>
+            &Delta;M<sub>mis</sub> = M - &Sigma; x<sub>i</sub> M<sub>i</sub>
+        </div>
+        <div class="eq-box">
+            <span class="text-left"><strong>Mistura de Gás Ideal (GI):</strong></span>
+            <span class="overline">V</span><sub>i</sub><sup>GI</sup> = V<sub>i</sub><sup>GI</sup> &nbsp;&nbsp;|&nbsp;&nbsp; <span class="overline">H</span><sub>i</sub><sup>GI</sup> = H<sub>i</sub><sup>GI</sup><br>
+            &Delta;V<sub>mis</sub><sup>GI</sup> = 0 &nbsp;&nbsp;|&nbsp;&nbsp; &Delta;H<sub>mis</sub><sup>GI</sup> = 0<br><br>
+            <span class="overline">G</span><sub>i</sub><sup>GI</sup> = &mu;<sub>i</sub><sup>GI</sup> = G<sub>i</sub><sup>GI</sup> + RT ln(y<sub>i</sub>)<br>
+            G<sup>GI</sup> = &Sigma; y<sub>i</sub> G<sub>i</sub><sup>GI</sup> + RT &Sigma; y<sub>i</sub> ln(y<sub>i</sub>)<br>
+            &Delta;G<sub>mis</sub><sup>GI</sup> = RT &Sigma; y<sub>i</sub> ln(y<sub>i</sub>)<br>
+            &Delta;S<sub>mis</sub><sup>GI</sup> = -R &Sigma; y<sub>i</sub> ln(y<sub>i</sub>)
+        </div>
+        
+    </div>
+
+    <div class="page">
+        <h1>VERSO - MATEMÁTICA E CONVERSÕES</h1>
+
+        <h2>1. CONSTANTES UNIVERSAIS</h2>
+        <table>
+            <tr><td><strong>R</strong> (Constante dos Gases)</td></tr>
+            <tr><td>= 8,314 J / (mol&middot;K)</td></tr>
+            <tr><td>= 8,314 (m³&middot;Pa) / (mol&middot;K)</td></tr>
+            <tr><td>= 0,08314 (L&middot;bar) / (mol&middot;K)</td></tr>
+            <tr><td>= 82,06 (cm³&middot;atm) / (mol&middot;K)</td></tr>
+            <tr><td>= 1,987 cal / (mol&middot;K)</td></tr>
+        </table>
+
+        <h2>2. CONVERSÃO DE UNIDADES</h2>
+        <table>
+            <tr><th>Pressão</th></tr>
+            <tr><td>1 atm = 101325 Pa = 1,01325 bar</td></tr>
+            <tr><td>1 bar = 10<sup>5</sup> Pa = 100 kPa</td></tr>
+            <tr><td>1 atm = 760 mmHg = 760 torr</td></tr>
+            <tr><th>Volume & Energia</th></tr>
+            <tr><td>1 L = 10<sup>-3</sup> m³ = 1000 cm³ = 1000 mL</td></tr>
+            <tr><td>1 cm³ = 10<sup>-6</sup> m³</td></tr>
+            <tr><td>1 J = 1 Pa&middot;m³ = 10 cm³&middot;bar = 10<sup>-3</sup> kJ</td></tr>
+            <tr><th>Temperatura & Massa Molar</th></tr>
+            <tr><td>T (K) = T (&deg;C) + 273,15</td></tr>
+            <tr><td>MM (kg/mol) = MM (g/mol) / 1000</td></tr>
+        </table>
+
+        <h2>3. REGRAS DE LOGARITMOS E EXPONENCIAIS</h2>
+        <div class="eq-box" style="text-align: left; font-size: 10pt;">
+            &bull; ln(a &middot; b) = ln(a) + ln(b)<br><br>
+            &bull; ln(a / b) = ln(a) - ln(b)<br><br>
+            &bull; ln(a<sup>b</sup>) = b &middot; ln(a)<br><br>
+            &bull; ln(e) = 1 &nbsp;&nbsp;|&nbsp;&nbsp; ln(1) = 0<br><br>
+            &bull; e<sup>ln(x)</sup> = x &nbsp;&nbsp;|&nbsp;&nbsp; ln(e<sup>x</sup>) = x
+        </div>
+
+        <h2>4. DERIVADAS FUNDAMENTAIS</h2>
+        <div class="eq-box" style="text-align: left; font-size: 10pt;">
+            &bull; Constante: d(c)/dx = 0<br><br>
+            &bull; Potência: d(x<sup>n</sup>)/dx = n &middot; x<sup>n-1</sup><br><br>
+            &bull; Constante x Função: d(c&middot;u)/dx = c &middot; (du/dx)<br><br>
+            &bull; Soma: d(u &plusmn; v)/dx = (du/dx) &plusmn; (dv/dx)<br><br>
+            &bull; Produto: d(u&middot;v)/dx = u &middot; (dv/dx) + v &middot; (du/dx)<br><br>
+            &bull; Quociente: d(u/v)/dx = [ v &middot; (du/dx) - u &middot; (dv/dx) ] / v<sup>2</sup><br><br>
+            &bull; Logarítmica: d(ln x)/dx = 1 / x<br><br>
+            &bull; Regra da Cadeia: d(ln u)/dx = (1 / u) &middot; (du/dx)
+        </div>
+
+        <h2>5. INTEGRAIS FUNDAMENTAIS</h2>
+        <div class="eq-box" style="text-align: left; font-size: 10pt;">
+            &bull; &int; dx = x + C<br><br>
+            &bull; &int; x<sup>n</sup> dx = [ x<sup>n+1</sup> / (n + 1) ] + C &nbsp;&nbsp;(para n &ne; -1)<br><br>
+            &bull; &int; (1 / x) dx = ln|x| + C<br><br>
+            &bull; Integração Definida: &int;<sub>A</sub><sup>B</sup> f(x) dx = F(B) - F(A)<br><br>
+            &bull; Capacidade Térmica (Exemplo de aplicação):<br>
+            &nbsp;&nbsp;&nbsp;&int; (A + BT + CT<sup>2</sup>) dT = AT + (B/2)T<sup>2</sup> + (C/3)T<sup>3</sup>
+        </div>
+
+        <h2>6. MANIPULAÇÕES ALGÉBRICAS ÚTEIS</h2>
+        <div class="eq-box" style="text-align: left; font-size: 10pt;">
+            &bull; <strong>Soma de Frações Molares:</strong><br> 
+            &nbsp;&nbsp;&nbsp;&Sigma; x<sub>i</sub> = 1 &nbsp;&rArr;&nbsp; x<sub>1</sub> + x<sub>2</sub> = 1 &nbsp;&rArr;&nbsp; dx<sub>2</sub> = -dx<sub>1</sub><br><br>
+            &bull; <strong>Propriedades Parciais a partir de Frações:</strong><br>
+            &nbsp;&nbsp;&nbsp;Se M = f(x<sub>1</sub>), então dM/dx<sub>1</sub> é a derivada de M em relação a x<sub>1</sub>.<br>
+            &nbsp;&nbsp;&nbsp;Lembre-se de substituir x<sub>2</sub> por (1 - x<sub>1</sub>) se necessário antes de derivar.
+        </div>
+
+    </div>
+
+</body>
+</html>
